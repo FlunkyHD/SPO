@@ -1,0 +1,10 @@
+KOKS program der koks med en del input
+
+Du gange meget store negative beløb bliver til et stort positivt beløb pga. overflow osv.
+
+Det største man kan på x transaktioner:
+
+4 transaktioner: 1000 + MAKS INT VÆRDI
+3 transaktioner: MAKS INT VÆRDI
+2 transaktioner: 1000
+1 transaktioner: 1000

@@ -1,0 +1,15 @@
+Besked 1:
+(Omvent rækkefølge til sidst) ( "_" = mellemrum)
+539913291 convert til binary = (00)100000 00101110 01101100 01001011 = Kl._
+539767857 convert til binary = (00)100000 00101100 00110100 00110001 = 14,_
+759570537 convert til binary = (00)101101 01000110 00100000 01101001 = i_F-
+1651862635 convert til binary = (0)1100010 01110101 01101100 01101011 = klub
+560883042 convert til binary = (00)100001 01101110 01100101 01100010 = ben!
+
+Besked 2:
+(Gem som pointere til chars eller ints er sku ikke helt sikker, og så print det der står på deres plads)
+
+0x7ffff7dd5129, 0x7ffff7dd5377, 0x7ffff7dd7192, 0x7ffff7dd5190, 0x7ffff7dd536b, 0x7ffff7dd5072, 0x7ffff7dd54b0, 0x7ffff7dd5342, 0x7ffff7dd50d0, 0x7ffff7dd53a2, 0x7ffff7dd5072, 0x7ffff7dd539c, 0x7ffff7dd5717, 0x7ffff7dd5342, 0x7ffff7dd5520  
+
+= ABORT_cops_know
+

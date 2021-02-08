@@ -1,0 +1,4 @@
+Normal settings result: 0.003335 sec 
+O3 Settings: 0.000002 sec
+O0 Settings: 0.003091 sec
+
