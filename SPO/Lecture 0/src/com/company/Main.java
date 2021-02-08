@@ -48,7 +48,6 @@ public class Main {
                 listen.add(input.charAt(i));
             }
         }
-
         return listen;
     }
 
