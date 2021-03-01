@@ -1,0 +1,23 @@
+Helpers
+  tab   = 9;
+
+
+Tokens
+  e = 'exp';
+  other = 'other';
+  if = 'if';
+  then = 'then';
+  else = 'else';
+  blank = ' ' | tab;
+
+Ignored Tokens
+  blank, eol;
+
+Productions
+start = stmt;
+stmt = {one} matched
+     | {two} unmatched;
+matched = {one} if e then [fst]:matched else [snd]:matched
+        | {two} other;
+unmatched = {one}  if e then matched else unmatched
+          | {two}  if e then unmatched;
