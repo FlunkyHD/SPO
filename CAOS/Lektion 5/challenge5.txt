@@ -1,0 +1,5 @@
+Level 1:
+Man skal bare give en streng som input der 62 karaktere eller mere i guess!
+fx:
+1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 11
+Level 2:
