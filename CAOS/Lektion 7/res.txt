@@ -1,0 +1,20 @@
+Man får ikke det samme resultat hver gang man køre det.
+Average ser om det stadig giver det samme.
+
+Original:
+8940 Cycles, Average: 511
+
+V1 (Loop unroll med 10 accumelatorer)
+3066 Cycles, Average 511
+
+V2 (Loop unroll med 10 accumelatorer hopper 20 af gangen, sǻ to operationer per acc)
+3120 Cycles, Average 511
+
+V3 (Loop unroll med 5 accumelatorer, 2 ope per acc)
+3102 Cycles, Average 511
+
+V4 Back to V1 med nogle defines i topppen
+3075 Cycles, Average 511
+
+V5 Slettede ekstra operation før return
+3207 Cycles, Average 511

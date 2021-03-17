@@ -1,41 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <x86intrin.h>
-#define IDENT 0;
-#define OP +
 
 void average_array(long *arr, int size, long* res) {
     int i;
     int limit = size - 9;
-    long acc0 = IDENT
-    long acc1 = IDENT
-    long acc2 = IDENT
-    long acc3 = IDENT
-    long acc4 = IDENT
-    long acc5 = IDENT
-    long acc6 = IDENT
-    long acc7 = IDENT
-    long acc8 = IDENT
-    long acc9 = IDENT
+    long acc0 = 0;
+    long acc1 = 0;
+    long acc2 = 0;
+    long acc3 = 0;
+    long acc4 = 0;
+    long acc5 = 0;
+    long acc6 = 0;
+    long acc7 = 0;
+    long acc8 = 0;
+    long acc9 = 0;
 
     for (i = 0; i < limit; i+=10) {
-        acc0 = acc0 OP arr[i];
-        acc1 = acc1 OP arr[i+1];
-        acc2 = acc2 OP arr[i+2];
-        acc3 = acc3 OP arr[i+3];
-        acc4 = acc4 OP arr[i+4];
-        acc5 = acc5 OP arr[i+5];
-        acc6 = acc6 OP arr[i+6];
-        acc7 = acc7 OP arr[i+7];
-        acc8 = acc8 OP arr[i+8];
-        acc9 = acc9 OP arr[i+9·];
+        acc0 = acc0 + arr[i];
+        acc1 = acc1 + arr[i+1];
+        acc2 = acc2 + arr[i+2];
+        acc3 = acc3 + arr[i+3];
+        acc4 = acc4 + arr[i+4];
+        acc5 = acc5 + arr[i+5];
+        acc6 = acc6 + arr[i+6];
+        acc7 = acc7 + arr[i+7];
+        acc8 = acc8 + arr[i+8];
+        acc9 = acc9 + arr[i+9];
     }
 
     for (; i < size; i++){
         acc0 = acc0 + arr[i];
     }
-
-    *res = (acc0 + acc1 + acc2 + acc3 + acc4 + acc5 + acc6 + acc7 + acc8 + acc9) / size;
+    acc0 = acc0 + acc1 + acc2 + acc3 + acc4 + acc5 + acc6 + acc7 + acc8 + acc9;
+    *res = acc0 / size;
 }
 
 //#define SIZE 1024*1024*32
