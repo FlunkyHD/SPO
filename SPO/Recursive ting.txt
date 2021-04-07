@@ -1,0 +1,63 @@
+
+Procedure Prog() 
+
+	Call Dcls() 
+	Call Stmts 
+	Call Match(ts, $) 
+
+end
+
+Procedure Dcls()
+
+    if ts.peek() = floatdcl or ts.peel() = intdcl
+        Call Dcl()
+        Call Dcls()
+    else if ts.peek() = $
+        // INGENTING
+    else
+        Call Error()
+
+end
+
+Procedure Dcl()
+
+    if ts.peek() = floatdcl
+        Call Match(ts, floatdcl)
+        Call Match(ts, id)
+    else if ts.peek() = intdcl
+        Call Match(ts, intdcl)
+        Call Match(ts, id)
+    else
+        Call Error()
+
+end
+
+Procedure Expr()
+
+    if ts.peek() = +
+        Call Match(ts, +)
+        Call Val()
+        Call Expr()
+    else if ts.peek() = -
+        Call Match(ts, -)
+        Call Val()
+        Call Expr()
+    else
+        Call Error()
+
+end
+
+Procedure Val()
+
+    if ts.peek() = id
+        Call Match(ts, id)
+    else if ts.peek() = inum
+        Call Match(ts, inum)
+    else if ts.peek() = fnum
+        Call Match(ts, inum)
+    else
+        Call Error()
+
+end
+
+
