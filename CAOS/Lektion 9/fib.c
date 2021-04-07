@@ -13,12 +13,24 @@
 int fib(int n) {
   
   pid_t c1;
+  int fibNum;
 
   c1=fork();
   if(c1==0) {
     //CHILD
-    printf("process %d\n", getpid());
-    exit( 42); 
+    printf("process %d n=%d \n", getpid(), n);
+    if(n == 0){
+	fibNum = 0;
+    	exit(0);
+    } else if (n == 1) {
+	fibNum = 1;
+	exit(1);
+    } else {
+	fibNum = (fib(n-1) + fib(n-2));
+	printf("Dil: %d \n", fibNum);
+    	exit(fibNum);
+    }
+    exit( fibNum); 
   } else {
     //PARENT
     pid_t c;
@@ -29,7 +41,7 @@ int fib(int n) {
       int exitValue1=WEXITSTATUS(wStatus1);
       printf("Process %d got %d from %d\n",
 	getpid(), exitValue1, c);
-      exit(43);
+      exit(fibNum);
      }
   }
  printf("ONLY Reached if something went wrong!\n");
