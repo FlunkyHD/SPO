@@ -1,0 +1,3 @@
+3.3) implement your solution and try it out in the virtual machine.  You will need to change to main function to create a printCount thread that runs concurrently with the run_counter threads. The printCount function is to iteratively call getAll foloowed by a sleep(1); The books code can be fetched from below. 
+https://github.com/jonathantorres/ostep/blob/master/ch29/slop_counter.c
+https://github.com/remzi-arpacidusseau/ostep-code/tree/master/include
