@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "DOCKER_GANG/1.0.0": {
+        "runtime": {
+          "DOCKER_GANG.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DOCKER_GANG/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,13 @@
+C:\Users\Morten Jørgensen\Desktop\Uni\4. Semester\sem4\DOCKER_GANG\bin\Release\netcoreapp3.1\DOCKER_GANG.exe
+C:\Users\Morten Jørgensen\Desktop\Uni\4. Semester\sem4\DOCKER_GANG\bin\Release\netcoreapp3.1\DOCKER_GANG.deps.json
+C:\Users\Morten Jørgensen\Desktop\Uni\4. Semester\sem4\DOCKER_GANG\bin\Release\netcoreapp3.1\DOCKER_GANG.runtimeconfig.json
+C:\Users\Morten Jørgensen\Desktop\Uni\4. Semester\sem4\DOCKER_GANG\bin\Release\netcoreapp3.1\DOCKER_GANG.runtimeconfig.dev.json
+C:\Users\Morten Jørgensen\Desktop\Uni\4. Semester\sem4\DOCKER_GANG\bin\Release\netcoreapp3.1\DOCKER_GANG.dll
+C:\Users\Morten Jørgensen\Desktop\Uni\4. Semester\sem4\DOCKER_GANG\bin\Release\netcoreapp3.1\DOCKER_GANG.pdb
+C:\Users\Morten Jørgensen\Desktop\Uni\4. Semester\sem4\DOCKER_GANG\obj\Release\netcoreapp3.1\DOCKER_GANG.csprojAssemblyReference.cache
+C:\Users\Morten Jørgensen\Desktop\Uni\4. Semester\sem4\DOCKER_GANG\obj\Release\netcoreapp3.1\DOCKER_GANG.AssemblyInfoInputs.cache
+C:\Users\Morten Jørgensen\Desktop\Uni\4. Semester\sem4\DOCKER_GANG\obj\Release\netcoreapp3.1\DOCKER_GANG.AssemblyInfo.cs
+C:\Users\Morten Jørgensen\Desktop\Uni\4. Semester\sem4\DOCKER_GANG\obj\Release\netcoreapp3.1\DOCKER_GANG.csproj.CoreCompileInputs.cache
+C:\Users\Morten Jørgensen\Desktop\Uni\4. Semester\sem4\DOCKER_GANG\obj\Release\netcoreapp3.1\DOCKER_GANG.dll
+C:\Users\Morten Jørgensen\Desktop\Uni\4. Semester\sem4\DOCKER_GANG\obj\Release\netcoreapp3.1\DOCKER_GANG.pdb
+C:\Users\Morten Jørgensen\Desktop\Uni\4. Semester\sem4\DOCKER_GANG\obj\Release\netcoreapp3.1\DOCKER_GANG.genruntimeconfig.cache
