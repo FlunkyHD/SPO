@@ -1,0 +1,1 @@
+Man skal huske -pthread i gcc for at det virker :)
