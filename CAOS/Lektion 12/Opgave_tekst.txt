@@ -1,0 +1,126 @@
+1) Producer-Consumer
+1.1 Consider the wrong solution to the PC problem listed in OSTEP Chapter 30 “Figure 30.8: Producer/Consumer: Single CV And If Statement”. The example in figure 30.9 showed an error trace where a consumer read from an empty buffer. Is it possible to construct a scenario where a producer overwrites a full buffer?
+
+	• Ja det samme kunne ske hvis der var flere producenter og man havde et uheldigt context-switch
+
+1.2 Implement and run the correct version (print out when you consume and when you produce, and vary the number of producers/consumers): https://github.com/remzi-arpacidusseau/ostep-code/blob/master/threads-cv/pc.c
+
+
+2) Bank Account with Condition Variables:
+ 
+Consider the transfer among bank-accounts from last week. Change the transfer function to block the calling thread untill insufficient money is available at the from account instead of returning true/false.  Use a single “bank” mutex lock and 1 (or more) condition variables. You may assume that amount is non-negative.
+	int transfer(int * from,int * to, int amount){
+	    assert(amount>=0);
+    if(*from<amount)
+      return false
+    *from-= amount;
+    *to+=amount;
+    return true; 
+}
+	int kontoA=10; int kontoB=20; 
+	Thread mand(){transfer(&kontoA,&kontoB,7));
+	Thread kone(){transfer(&kontoA,&kontoB,4));
+	Thread son (){transfer(&kontoB,&kontoA,10));
+
+3. The rendezvous problem
+The rendezvous problem is as follows: you have two threads, each of which are about to enter the rendezvous point in the code. Neither should exit this part of the code before the other enters it. Consider using two semaphores for this task. Sketch how the two threads can make the rendezvous.  
+4. Can the following program deadlock? Why or Why not?
+	sem_t a; sem_t b; sem_t c;
+	sem_init(&a,0,1); sem_init(&b,0,1);
+sem_init(&b,0,1);
+ 
+Thread 1	Thread 2
+sem_wait(&a);     	sem_wait(&c);
+sem_wait(&b);	sem_wait(&b);
+sem_post(&b);     	sem_post(&b);
+sem_wait(&c);	sem_post(&c);
+sem_post(&c);
+sem_post(&a);
+ 
+
+5. Consider the following program that may deadlock
+ 
+1)      For each thread, list the pairs of mutexes it holds simultaneously
+2)      If a < b < c, which threads violate the locking order rule for deadlock prevention
+3)      Rewrite each thread to guarantees absence of deadlock
+	sem_t a; sem_t b; sem_t c;
+	sem_init(&a,0,1); sem_init(&b,0,1);
+sem_init(&b,0,1); 
+	 
+
+Thread 1	Thread 2	Thread 3
+sem_wait(&a);     	sem_wait(&c);	sem_wait(&c);
+sem_wait(&b);	sem_wait(&b);	sem_post(&c);
+sem_post(&b);     	sem_post(&b);	sem_wait(&b);
+sem_wait(&c);	sem_post(&c);	sem_wait(&a);     
+sem_post(&c);	sem_wait(&a);     	sem_post(&a);
+sem_post(&a);	sem_post(&a);	sem_post(&b);
+ 	 
+Challenge 13: Therac 25 "theuraputic machine"
+The Therac 25 therapeutic radiation machine killed several people and injured even more in the 1980’es. When the case was investigated by independent software safety researcher Nancy Leveson, she found several critical software flaws in the system, including several race-conditions.
+The machine supports various kinds of treatment and treatment parameters, but we will focus on two:
+	• Treatment A where a high dose is given to a big area (wide-beam)
+	•  Treatment B where a lower dose is to be given to a focused area   (narrow beam)
+The radiation beam width is controlled by bending magnets whose position is controlled by the machine.
+Deaths or injuries occurred because the machine gave a high dose to a highly focused area.
+The code below attempts to present a code-sketch that mimics how one of these race-conditions could emerge. Can you spot it?
+There is a secondary problem related to detection of errors in the machine. Can you spot it?
+The real system was programmed in assembly, no threads package, and switching between the “threads” in interrupts handlers”. The race-condition we seek here is not cause by simple preemption in a test-set update, so you may disregard those.
+ 
+DISCLAIMER: The code is a highly simplified presentation of the problem (but maintains the core of one of the issues) for education purposes. Please read the official sources for the exact account!
+https://web.archive.org/web/20041128024227/http://www.cs.umd.edu/class/spring2003/cmsc838p/Misc/therac.pdf
+	
+	char MEOS[2]; //"Mode Energy Offset"
+	const int PWR=0; //indexes into MEOS
+	const int FOCUS=1;
+	//MEOS[PWR] indicates powerlevel (low / high )
+	//MEOS[FOCUS] indicated beam focus (narrow/wide)
+	unsigned char error=0;
+	unsigned char dataEntry=0;
+	unsigned char bendingDone=0;
+	unsigned char editing=0;
+	void showMenu(){
+	    printf("1:edit, 2: Start\n");
+	};
+	thread KeyHandlerInput(){
+	   while(1){ 
+	      showMenu();
+	      choice=readline();
+	      if(choice==EDIT)  {
+	       editing=1;
+	       //operator chooses between two kinds of treatment
+	       if(treatmentA) { MEOS[PWR]=High; MEOS[FOCUS]=WideBeam};
+	       if(treatmentB) { MEOS[PWR]=Low; MEOS[FOCUS]= NarrowBeam;}
+	       editing=0;
+	       } 
+	       else if( choice==START) {
+	         dataEntryDone=1;
+	       }
+	    }
+	}
+	Thread positionBendingMagnets() {
+	  while (!dataEntryDone) ; //just wait
+	  //dataEntryDone
+	  char focus= MEOS[FOCUS]); 
+	  forEach(magnet ) {
+	      bend(magnet,focus); //takes 8 seconds
+	      if(editing) stop();
+	  }
+	  bendingDone=1;
+	}
+	Thread Radiate(){
+	  while(bendingDone==0|| dataEntryDone==0) ; //just wait 
+	  if(other_parts_of_machine_OK) {
+	    // Bending Done && DataENtry==Done
+	    RADIATE(MEOS[PWR]);
+	  }  else {
+	    error++;
+	  }
+	  dataEntry=0;
+	  bendingDone=0;
+	}
+
+
+https://www.bugsnag.com/blog/bug-day-race-condition-therac-25
+
+Fra <https://www.moodle.aau.dk/mod/page/view.php?id=1225828> 
